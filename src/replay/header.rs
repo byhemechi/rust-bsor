@@ -2,6 +2,7 @@ use super::{error::BsorError, read_utils, Result};
 use crate::replay::BSOR_MAGIC;
 use std::io::Read;
 
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub(crate) struct Header {
     pub version: u8,
 }

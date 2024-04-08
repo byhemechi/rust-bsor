@@ -3,6 +3,7 @@ use crate::replay::{read_utils, BsorError, GetStaticBlockSize, ReplayFloat};
 use std::io::Read;
 
 #[derive(PartialEq, Clone, Debug)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Vector3 {
     pub x: ReplayFloat,
     pub y: ReplayFloat,
@@ -38,6 +39,7 @@ impl From<Vector4> for Vector3 {
 }
 
 #[derive(PartialEq, Clone, Debug)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Vector4 {
     pub x: ReplayFloat,
     pub y: ReplayFloat,

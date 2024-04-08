@@ -11,6 +11,7 @@ use std::ops::Deref;
 
 /// Struct implements [std::ops::Deref] trait so it could be treated as Vec<[Wall]>
 #[derive(Debug, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Walls(Vec<Wall>);
 
 impl Walls {
@@ -83,6 +84,7 @@ impl LoadRealBlockSize for Walls {
 }
 
 #[derive(PartialEq, Debug)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Wall {
     pub line_idx: LineIdx,
     pub obstacle_type: u8,

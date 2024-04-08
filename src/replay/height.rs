@@ -11,6 +11,7 @@ use std::ops::Deref;
 
 /// Struct implements [std::ops::Deref] trait so it could be treated as Vec<[Height]>
 #[derive(Debug, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Heights(Vec<Height>);
 
 impl Heights {
@@ -91,6 +92,7 @@ impl LoadRealBlockSize for Heights {
 }
 
 #[derive(PartialEq, Debug)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Height {
     pub height: ReplayFloat,
     pub time: ReplayTime,

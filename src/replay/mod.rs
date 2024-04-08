@@ -90,6 +90,7 @@ pub type Result<T> = std::result::Result<T, BsorError>;
 
 /// Basic crate struct corresponding to the structure of the bsor file
 #[derive(Debug)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Replay {
     pub version: u8,
     pub info: Info,
@@ -124,6 +125,7 @@ impl Replay {
 }
 
 /// Replay index needed to load individual blocks
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct ReplayIndex {
     pub version: u8,
     pub info: Info,
@@ -174,6 +176,7 @@ impl ReplayIndex {
 
 /// Struct storing index data about each block
 #[derive(Debug)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct BlockIndex<T> {
     ///! position in stream
     pos: u64,
@@ -235,6 +238,7 @@ pub trait LoadBlock {
     fn load<RS: Read + Seek>(&self, r: &mut RS) -> Result<Self::Item>;
 }
 
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub(crate) enum BlockType {
     Info = 0,
     Frames,

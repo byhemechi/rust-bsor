@@ -4,6 +4,7 @@ use crate::replay::{assert_start_of_block, BlockType, ReplayFloat, ReplayInt, Re
 use std::io::Read;
 
 #[derive(PartialEq, Debug)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Info {
     pub version: String,
     pub game_version: String,

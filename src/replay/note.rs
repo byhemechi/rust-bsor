@@ -11,6 +11,7 @@ use std::ops::Deref;
 
 /// Struct implements [std::ops::Deref] trait so it could be treated as Vec<[Note]>
 #[derive(Debug, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Notes(Vec<Note>);
 
 impl Notes {
@@ -93,6 +94,7 @@ impl LoadRealBlockSize for Notes {
 }
 
 #[derive(Debug, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Note {
     pub scoring_type: NoteScoringType,
     pub line_idx: LineIdx,
@@ -172,6 +174,7 @@ impl GetStaticBlockSize for Note {
 }
 
 #[derive(Debug, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct NoteCutInfo {
     pub speed_ok: bool,
     pub direction_ok: bool,
@@ -237,6 +240,7 @@ impl GetStaticBlockSize for NoteCutInfo {
 }
 
 #[derive(Debug, Clone, Copy)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub enum NoteEventType {
     Good = 0,
     Bad,
@@ -274,6 +278,7 @@ impl PartialEq for NoteEventType {
 }
 
 #[derive(Debug, Clone, Copy)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub enum NoteScoringType {
     NormalOld = 0,
     Ignore,
@@ -323,6 +328,7 @@ impl PartialEq for NoteScoringType {
 }
 
 #[derive(Debug, Clone, Copy)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub enum CutDirection {
     TopCenter,
     BottomCenter,
@@ -370,6 +376,7 @@ impl PartialEq for CutDirection {
 }
 
 #[derive(Debug, Clone, Copy)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub enum ColorType {
     Red = 0,
     Blue,

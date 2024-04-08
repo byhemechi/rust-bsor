@@ -10,6 +10,7 @@ use std::ops::Deref;
 
 /// Struct implements [std::ops::Deref] trait so it could be treated as Vec<[Frame]>
 #[derive(Debug, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Frames(Vec<Frame>);
 
 impl Frames {
@@ -83,6 +84,7 @@ impl LoadRealBlockSize for Frames {
 }
 
 #[derive(PartialEq, Debug)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Frame {
     pub time: ReplayTime,
     pub fps: ReplayInt,
@@ -118,6 +120,7 @@ impl GetStaticBlockSize for Frame {
 }
 
 #[derive(PartialEq, Debug)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct PositionAndRotation {
     pub position: vector::Vector3,
     pub rotation: vector::Vector4,

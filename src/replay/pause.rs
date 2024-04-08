@@ -11,6 +11,7 @@ use std::ops::Deref;
 
 /// Struct implements [std::ops::Deref] trait so it could be treated as Vec<[Pause]>
 #[derive(Debug, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Pauses(Vec<Pause>);
 
 impl Pauses {
@@ -91,6 +92,7 @@ impl LoadRealBlockSize for Pauses {
 }
 
 #[derive(PartialEq, Debug)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Pause {
     pub duration: ReplayLong,
     pub time: ReplayTime,
